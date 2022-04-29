@@ -1,4 +1,4 @@
-FROM nvidia/cuda
+FROM nvidia/cuda:11.6.0-base-ubuntu20.04
 
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,video,utility
