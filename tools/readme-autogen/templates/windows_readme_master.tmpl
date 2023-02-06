@@ -13,16 +13,6 @@ If you like this project, best way to contribute is by sending PRs and fixing do
 
 ---
 
-## Mirrors
-
-IPFS site mirror: [https://ipfs.io/ipns/QmYTEwv2GjQhtdN9bDfpLfQrVD7YLb1Sbh8igX8cEe9hHF/win/](https://ipfs.io/ipns/QmYTEwv2GjQhtdN9bDfpLfQrVD7YLb1Sbh8igX8cEe9hHF/win/)
-
-IPFS git mirror:
-
-```
-git clone https://ipfs.io/ipns/Qmed4r8yrBP162WK1ybd1DJWhLUi4t6mGuBoB9fLtjxR7u nvidia-patch
-```
-
 ## Requirements
 
 - Any of following 64bit operating systems:
@@ -30,6 +20,7 @@ git clone https://ipfs.io/ipns/Qmed4r8yrBP162WK1ybd1DJWhLUi4t6mGuBoB9fLtjxR7u nv
   - Windows 8
   - Windows 8.1
   - Windows 10
+  - Windows 11
   - Windows Server 2008 R2
   - Windows Server 2012
   - Windows Server 2012 R2
@@ -50,6 +41,8 @@ git clone https://ipfs.io/ipns/Qmed4r8yrBP162WK1ybd1DJWhLUi4t6mGuBoB9fLtjxR7u nv
    - *If patching fails, close all applications using nvencodeapi.dll, such as OBS Studio, Plex or Discord.*
 
 **Example:** for 64bit Windows 10 running driver version $latest_geforce_version, use `win10_x64/$latest_geforce_version/nvencodeapi64.1337` against `C:\WINDOWS\system32\nvencodeapi64.dll` **and** `win10_x64/$latest_geforce_version/nvencodeapi.1337` against `C:\WINDOWS\SysWOW64\nvencodeapi.dll`.
+
+You can also use FFmpeg to [verify that NVENC session limit is removed](https://github.com/keylase/nvidia-patch/wiki/Verify-NVENC-patch).
 
 If you experience issues with streaming software based on Nvidia streaming facilities (Nvidia Shield TV, Moonlight), you also have to import few registry values in order to workaround binary signature mismatch. See [**skip\_sig\_check** (clickable)](skip_sig_check) directory for instructions.
 

@@ -1,7 +1,7 @@
 NVENC and NvFBC patches for Windows Nvidia drivers
 ==================================================
 
-![GitHub last commit](https://img.shields.io/github/last-commit/keylase/nvidia-patch.svg) ![Latest GeForce version](https://img.shields.io/badge/latest%20GeForce%20version-512.15-brightgreen.svg) ![Latest Quadro version](https://img.shields.io/badge/latest%20Quadro%20version-472.84-blue.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/keylase/nvidia-patch.svg) ![Latest GeForce version](https://img.shields.io/badge/latest%20GeForce%20version-528.24-brightgreen.svg) ![Latest Quadro version](https://img.shields.io/badge/latest%20Quadro%20version-526.67-blue.svg)
 
 NVENC patch removes restriction on maximum number of simultaneous NVENC video encoding sessions imposed by Nvidia to consumer-grade GPUs.
 
@@ -13,16 +13,6 @@ If you like this project, best way to contribute is by sending PRs and fixing do
 
 ---
 
-## Mirrors
-
-IPFS site mirror: [https://ipfs.io/ipns/QmYTEwv2GjQhtdN9bDfpLfQrVD7YLb1Sbh8igX8cEe9hHF/win/](https://ipfs.io/ipns/QmYTEwv2GjQhtdN9bDfpLfQrVD7YLb1Sbh8igX8cEe9hHF/win/)
-
-IPFS git mirror:
-
-```
-git clone https://ipfs.io/ipns/Qmed4r8yrBP162WK1ybd1DJWhLUi4t6mGuBoB9fLtjxR7u nvidia-patch
-```
-
 ## Requirements
 
 - Any of following 64bit operating systems:
@@ -30,6 +20,7 @@ git clone https://ipfs.io/ipns/Qmed4r8yrBP162WK1ybd1DJWhLUi4t6mGuBoB9fLtjxR7u nv
   - Windows 8
   - Windows 8.1
   - Windows 10
+  - Windows 11
   - Windows Server 2008 R2
   - Windows Server 2012
   - Windows Server 2012 R2
@@ -49,7 +40,9 @@ git clone https://ipfs.io/ipns/Qmed4r8yrBP162WK1ybd1DJWhLUi4t6mGuBoB9fLtjxR7u nv
 5. Apply x86 library patch to corresponding file in `%WINDIR%\SysWOW64\` in the same way as previous one.
    - *If patching fails, close all applications using nvencodeapi.dll, such as OBS Studio, Plex or Discord.*
 
-**Example:** for 64bit Windows 10 running driver version 512.15, use `win10_x64/512.15/nvencodeapi64.1337` against `C:\WINDOWS\system32\nvencodeapi64.dll` **and** `win10_x64/512.15/nvencodeapi.1337` against `C:\WINDOWS\SysWOW64\nvencodeapi.dll`.
+**Example:** for 64bit Windows 10 running driver version 528.24, use `win10_x64/528.24/nvencodeapi64.1337` against `C:\WINDOWS\system32\nvencodeapi64.dll` **and** `win10_x64/528.24/nvencodeapi.1337` against `C:\WINDOWS\SysWOW64\nvencodeapi.dll`.
+
+You can also use FFmpeg to [verify that NVENC session limit is removed](https://github.com/keylase/nvidia-patch/wiki/Verify-NVENC-patch).
 
 If you experience issues with streaming software based on Nvidia streaming facilities (Nvidia Shield TV, Moonlight), you also have to import few registry values in order to workaround binary signature mismatch. See [**skip\_sig\_check** (clickable)](skip_sig_check) directory for instructions.
 
@@ -63,7 +56,7 @@ Credits to [TroubleChute channel](https://www.youtube.com/channel/UCkih2oVTbXPEp
 
 ## Version Table
 
-### Windows 10 drivers
+### Windows 10, Windows 11 drivers
 
 
 | Product series | Version | x64 library patch | x86 library patch | Driver link |
@@ -179,11 +172,32 @@ Credits to [TroubleChute channel](https://www.youtube.com/channel/UCkih2oVTbXPEp
 | GeForce | 472.12 | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/472.12/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/472.12/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/472.12/472.12-desktop-win10-win11-64bit-international-whql.exe) |
 | GeForce | 472.12 Studio Driver | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_472.12/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_472.12/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/472.12/472.12-desktop-win10-win11-64bit-international-nsd-whql.exe) |
 | GeForce | 472.84 Studio Driver | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_472.84/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_472.84/nvencodeapi.1337) | [Driver link](http://international.download.nvidia.com/Windows/472.84/472.84-desktop-win10-win11-64bit-international-nsd-whql.exe) |
-| GeForce | 511.23 | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/511.23/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/511.23/nvencodeapi.1337) | [Driver link](http://international.download.nvidia.com/Windows/511.23/511.23-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 511.23 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/511.23/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/511.23/nvencodeapi.1337) | [Driver link](http://international.download.nvidia.com/Windows/511.23/511.23-desktop-win10-win11-64bit-international-dch-whql.exe) |
 | GeForce | 511.65 Studio Driver | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_511.65/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_511.65/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/511.65/511.65-desktop-win10-win11-64bit-international-nsd-dch-whql.exe) |
-| GeForce | 511.79 | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/511.79/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/511.79/nvencodeapi.1337) | [Driver link](http://international.download.nvidia.com/Windows/511.79/511.79-desktop-win10-win11-64bit-international-dch-whql.exe) |
-| GeForce | 512.15 | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/512.15/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/512.15/nvencodeapi.1337) | [Driver link](http://international.download.nvidia.com/Windows/512.15/512.15-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 511.79 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/511.79/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/511.79/nvencodeapi.1337) | [Driver link](http://international.download.nvidia.com/Windows/511.79/511.79-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 512.15 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/512.15/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/512.15/nvencodeapi.1337) | [Driver link](http://international.download.nvidia.com/Windows/512.15/512.15-desktop-win10-win11-64bit-international-dch-whql.exe) |
 | GeForce | 512.15 Studio Driver | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_512.15/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_512.15/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/512.15/512.15-desktop-win10-win11-64bit-international-nsd-dch-whql.exe) |
+| GeForce | 512.59 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/512.59/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/512.59/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/512.59/512.59-desktop-win10-win11-64bit-international-dch-whql-g.exe) |
+| GeForce | 512.59 Studio Driver | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_512.59/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_512.59/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/512.59/512.59-desktop-win10-win11-64bit-international-nsd-dch-whql-g.exe) |
+| GeForce | 512.77 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/512.77/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/512.77/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/512.77/512.77-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 512.95 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/512.95/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/512.95/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/512.95/512.95-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 516.40 | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/516.40/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/516.40/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/516.40/516.40-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 516.59 | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/516.59/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/516.59/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/516.59/516.59-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 516.79 DCH (Hotfix) | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/516.79/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/516.79/nvencodeapi.1337) | [Driver link](https://international-gfe.download.nvidia.com/Windows/516.79hf/516.79-desktop-notebook-win10-win11-64bit-international-dch.hf.exe) |
+| GeForce | 516.93 Studio Driver | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_516.93/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_516.93/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/516.93/516.93-notebook-win10-win11-64bit-international-nsd-dch-whql.exe) |
+| GeForce | 516.94 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/516.94/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/516.94/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/516.94/516.94-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 517.40 Studio Driver | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_517.40/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_517.40/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/517.40/517.40-desktop-win10-win11-64bit-international-nsd-dch-whql.exe) |
+| GeForce | 517.48 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/517.48/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/517.48/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/517.48/517.48-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 522.25 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/522.25/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/522.25/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/522.25/522.25-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 522.30 Studio Driver | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_522.30/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_522.30/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/522.30/522.30-desktop-win10-win11-64bit-international-nsd-dch-whql.exe) |
+| GeForce | 526.47 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/526.47/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/526.47/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/526.47/526.47-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 526.86 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/526.86/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/526.86/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/526.86/526.86-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 526.98 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/526.98/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/526.98/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/526.98/526.98-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 527.37 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/527.37/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/527.37/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/527.37/527.37-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 527.56 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/527.56/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/527.56/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/527.56/527.56-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 527.56 Studio Driver | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_527.56/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/nsd_527.56/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/527.56/527.56-desktop-win10-win11-64bit-international-nsd-dch-whql.exe) |
+| GeForce | 528.02 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/528.02/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/528.02/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/528.02/528.02-desktop-win10-win11-64bit-international-dch-whql.exe) |
+| GeForce | 528.24 DCH | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/528.24/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/528.24/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/528.24/528.24-desktop-win10-win11-64bit-international-dch-whql.exe) |
 
 
 | Product series | Version | x64 library patch | x86 library patch | Driver link |
@@ -230,6 +244,7 @@ Credits to [TroubleChute channel](https://www.youtube.com/channel/UCkih2oVTbXPEp
 | Quadro | 471.68 | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/quadro_471.68/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/quadro_471.68/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/Quadro_Certified/471.68/471.68-quadro-rtx-desktop-notebook-win10-win11-64bit-international-whql.exe) |
 | Quadro | 472.12 | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/quadro_472.12/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/quadro_472.12/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/Quadro_Certified/472.12/472.12-quadro-rtx-desktop-notebook-win10-win11-64bit-international-whql.exe) |
 | Quadro | 472.84 | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/quadro_472.84/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/quadro_472.84/nvencodeapi.1337) | [Driver link](http://international.download.nvidia.com/Windows/Quadro_Certified/472.84/472.84-quadro-rtx-desktop-notebook-win10-win11-64bit-international-whql.exe) |
+| Quadro | 526.67 | [x64 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/quadro_526.67/nvencodeapi64.1337) | [x86 library patch](https://raw.githubusercontent.com/keylase/nvidia-patch/master/win/win10_x64/quadro_526.67/nvencodeapi.1337) | [Driver link](https://international.download.nvidia.com/Windows/Quadro_Certified/526.67/526.67-quadro-rtx-desktop-notebook-win10-win11-64bit-international-dch-whql.exe) |
 
 
 ### Windows 7, Windows 8, Windows 8.1 drivers

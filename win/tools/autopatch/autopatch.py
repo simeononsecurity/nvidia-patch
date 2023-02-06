@@ -9,6 +9,7 @@ from binascii import unhexlify
 import xml.etree.ElementTree as ET
 import itertools
 import functools
+import urllib.request
 
 
 CRLF = b"\x0d\x0a"
@@ -54,14 +55,14 @@ def parse_args():
     parser.add_argument("-S", "--search",
                         nargs="+",
                         default=[
-                            "8BE885C0750548893EEB",
+                            "8BF085C0750549892FEB",
                             "89450885C08B450C75048938EB",
                         ],
                         help="representation of search pattern(s) binary string")
     parser.add_argument("-R", "--replacement",
                         nargs="+",
                         default=[
-                            "33C08BE8750548893EEB",
+                            "33C08BF0750549892FEB",
                             "33C08945088B450C75048938EB",
                         ],
                         help="representation of replacement(s) binary string")
@@ -193,6 +194,27 @@ def patch_flow(installer_file, search, replacement, target, target_name, patch_n
     replacement = unhexlify(replacement)
     assert len(search) == len(replacement), "len() of search and replacement"\
         " is not equal"
+
+    # check if installer file exists or try to download
+    if not os.path.isfile(installer_file):  #installer file does not exists, get url for download
+        if not installer_file.startswith("http"):  #installer_file is a version, parse to url
+            filename = installer_file+"-desktop-win10-win11-64bit-international-dch-whql.exe"
+            installer_file = "https://international.download.nvidia.com/Windows/"+installer_file+"/"+filename
+        else:  # installer_file is an url
+            filename = os.path.basename(installer_file)
+        # download installer and save in .temp
+
+        if not os.path.isfile(os.path.join('temp', filename)):  # check if file already downloaded
+            print(f"Downloading... ( {installer_file} TO {os.path.join('temp', filename)} )")
+            print("This may take a while (~800MB)")
+            urllib.request.urlretrieve(installer_file, os.path.join('temp', filename))
+            installer_file = os.path.join('temp', filename)
+        else:
+            installer_file = os.path.join('temp', filename)
+            print(f"Use downloaded file in `{installer_file}`")
+
+
+
     patch = make_patch(installer_file,
                        arch_tgt=target,
                        search=search,
@@ -211,9 +233,11 @@ def patch_flow(installer_file, search, replacement, target, target_name, patch_n
                                                 sevenzip=sevenzip)
         drv_prefix = {
             "100": "quadro_",
+            "103": "quadro_",
             "300": "",
             "301": "nsd_",
             "303": "", # DCH
+            "304": "nsd_",
         }
         installer_name = os.path.basename(installer_file).lower()
         if 'winserv2008' in installer_name:

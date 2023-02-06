@@ -17,16 +17,6 @@ If you want to donate, please send it to your favorite open source organizations
 
 ---
 
-## Mirrors
-
-IPFS site mirror: [https://ipfs.io/ipns/QmYTEwv2GjQhtdN9bDfpLfQrVD7YLb1Sbh8igX8cEe9hHF/](https://ipfs.io/ipns/QmYTEwv2GjQhtdN9bDfpLfQrVD7YLb1Sbh8igX8cEe9hHF/)
-
-IPFS git mirror:
-
-```
-git clone https://ipfs.io/ipns/Qmed4r8yrBP162WK1ybd1DJWhLUi4t6mGuBoB9fLtjxR7u nvidia-patch
-```
-
 ## Requirements
 - x86\_64 system architecture
 - GNU/Linux operating system
@@ -89,7 +79,7 @@ Examples are provided for driver version ${example_driver_version}. All commands
 
 ### Download and install driver
 
-Skip this step if you already have installed driver with version supported by this patch (from distro packages, for example).
+Skip this step if you already have installed driver with version supported by this patch.
 
 Make sure you have kernel headers and compiler installed before running Nvidia driver installer. Kernel headers and compiler are required to build nvidia kernel module. Recommended way to do this is to install `dkms` package, if it is available in your distro. This way `dkms` package will pull all required dependencies to allow building kernel modules and kernel module builds will be automated in a reliable fashion.
 
@@ -118,6 +108,8 @@ bash ./patch.sh
 ```
 
 You're all set!
+
+**Note:** Sometimes distribution installed drivers are not found by the patch script. In that case, please uninstall the nvidia driver using your distribution package manager, and install it using the steps [above](#download-and-install-driver).
 
 ## Rollback
 
